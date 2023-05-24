@@ -3,14 +3,19 @@ let counter = 0;
 
 
 const bubblePlayer = () =>{
-    const bubble = document.createElement("span");
+    const urls = ["./assets/fusee.png", "./assets/kfkfk.png", "./assets/rggrg.png"]
+    const bubble = document.createElement("img");
+    const random = Math.floor(Math.random()*3)
+    bubble.src = urls[random];
     bubble.classList.add("bubble");
     document.body.appendChild(bubble);
+    bubble.ondragstart = function() { return false; };
     
     const size = Math.random() *200 + 100 + "px";
     bubble.style.height = size;
     bubble.style.width = size;
-    
+
+
     const plusMinus = Math.random()> 0.5 ? 1 : -1;
     bubble.style.top = Math.random() *100 + 50 + "%";
     bubble.style.left = Math.random() *100 + "%";
