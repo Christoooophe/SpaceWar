@@ -3,7 +3,7 @@ body{
     background-size: auto;
     overflow: hidden;
     min-height: 100vh;
-    cursor: crosshair;
+    cursor: url('./assets/petiteepee.png'), auto;
 }
 .bubble{
     position: absolute;
@@ -20,11 +20,13 @@ body{
         filter: hue-rotate(720deg);
     }
 }
-
-h3{
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+h3, h1, h2{
     font-size: 50px;
-    text-align: left;
-    margin-top: 10px;
-    margin-left: 10px;
     color: white;
+    margin-top: 10px;
 }

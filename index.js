@@ -1,6 +1,9 @@
 const counterDisplay = document.querySelector('h3');
 let counter = 0;
-
+const counterSeconds = document.querySelector('h2');
+let seconds = 30;
+const record = document.querySelector('h1');
+let highest = 0;
 
 const bubblePlayer = () =>{
     const urls = ["./assets/fusee.png", "./assets/kfkfk.png", "./assets/rggrg.png"]
@@ -22,7 +25,7 @@ const bubblePlayer = () =>{
     bubble.style.setProperty('--left', Math.random() *100 * plusMinus +"%" )
     bubble.addEventListener('click', () =>{
         counter ++;
-        counterDisplay.textContent = counter;
+        counterDisplay.textContent = "Kills : " + counter;
         bubble.remove();
     })
     setTimeout(() =>{
@@ -30,5 +33,41 @@ const bubblePlayer = () =>{
     },8000)
 }
 
+function incrementSeconds(){
+    seconds--;
+    counterSeconds.textContent = seconds + "s";
+    if(seconds === 0){
+        alert("Vous avez détruit " + counter + " vaisseaux");
+        response = "";
+        while(response != "oui" && response != "non"){
+            response = prompt("Voulez-vous rejouer ? (oui ou non)");
+        }
+        if(counter > highest){
+            highest = counter;
+            record.textContent = "Record " + highest;
+        }
+        promptDemand(response);
+    }
+}
 
-setInterval(bubblePlayer,300)
+function promptDemand(response){
+    if(response === "oui"){
+        seconds = 30;
+        counter = 0;
+        counterSeconds.textContent = seconds;
+        counterDisplay.textContent = "Kills : " +counter;
+    }
+    else if(response === "non"){
+        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley');
+        seconds = 30;
+        counter = 0;
+        counterSeconds.textContent = seconds;
+        counterDisplay.textContent = "Kills : " +counter;
+    }
+}
+
+alert("Ready ?");
+
+setInterval(incrementSeconds, 1000);
+setInterval(bubblePlayer,300);
+
